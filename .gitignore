@@ -38,4 +38,4 @@ dump.*
 Thumbs.db
 
 # Large dump files
-outputs/dump2.deform 
+# outputs/dump2.deform  # Commented out since we're now using split files 
