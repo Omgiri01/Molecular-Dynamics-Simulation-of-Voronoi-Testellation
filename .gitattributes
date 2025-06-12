@@ -10,3 +10,4 @@ studies/** filter=lfs diff=lfs merge=lfs -text
 *.png filter=lfs diff=lfs merge=lfs -text
 *.txt filter=lfs diff=lfs merge=lfs -text
 *.alloy filter=lfs diff=lfs merge=lfs -text
+outputs/dump.voro filter=lfs diff=lfs merge=lfs -text
