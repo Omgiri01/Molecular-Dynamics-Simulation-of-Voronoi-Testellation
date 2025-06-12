@@ -1,0 +1,7 @@
+LAMMPS (2 Apr 2025)
+OMP_NUM_THREADS environment is not set. Defaulting to 1 thread. (src/comm.cpp:99)
+  using 1 OpenMP thread(s) per MPI task
+Loaded 0 plugins from C:\lammps\plugins
+Loaded 1 plugins from C:\Users\OM GIRI\AppData\Local\LAMMPS 64-bit 2Apr2025\plugins
+# LAMMPS input script for deformation studies
+log             lammps.log

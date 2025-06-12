@@ -1,0 +1,12 @@
+*.dat filter=lfs diff=lfs merge=lfs -text
+*.xyz filter=lfs diff=lfs merge=lfs -text
+*.dump filter=lfs diff=lfs merge=lfs -text
+*.log filter=lfs diff=lfs merge=lfs -text
+results/** filter=lfs diff=lfs merge=lfs -text
+outputs/** filter=lfs diff=lfs merge=lfs -text
+studies/** filter=lfs diff=lfs merge=lfs -text
+*.exe filter=lfs diff=lfs merge=lfs -text
+*.pdf filter=lfs diff=lfs merge=lfs -text
+*.png filter=lfs diff=lfs merge=lfs -text
+*.txt filter=lfs diff=lfs merge=lfs -text
+*.alloy filter=lfs diff=lfs merge=lfs -text

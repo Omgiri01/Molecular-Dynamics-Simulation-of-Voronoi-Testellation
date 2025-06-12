@@ -1,0 +1,49 @@
+# LAMMPS input script for deformation studies
+log             lammps.log
+units           metal
+dimension       3
+boundary        p p p
+atom_style      atomic
+read_data       voronoi10.lmp
+
+# Potential (EAM for aluminum)
+pair_style      eam/alloy
+pair_coeff      * * Al_LEA.eam.alloy Al
+
+neighbor        2.0 bin
+neigh_modify    delay 10
+
+timestep        0.001
+thermo          10
+thermo_style    custom step temp pe ke etotal press pxx pyy pzz pxy pxz pyz lx ly lz
+
+# Groups
+region whole block 0 100 0 100 0 100
+
+# Initial velocities
+velocity all create 300.0 12345 mom yes rot yes dist gaussian
+
+# Fixes
+fix 1 all nvt temp 300.0 300.0 0.1
+
+# Deformation Fix - Choose one based on the test you want to perform:
+# Uniaxial tension along z:
+fix 2 all deform 1 z erate 0.001 units box remap x
+# Uniaxial tension along x:
+# fix 2 all deform 1 x erate 0.001 units box remap y
+# Simple shear in xz plane (applying shear in x on z faces):
+# fix 2 all deform 1 xz erate 0.001 units box remap z
+# Add other deformation fixes as needed (e.g., compression, shear in other planes)
+
+# IMPORTANT: Make sure only ONE 'fix deform' command is uncommented at a time.
+
+# Compute
+compute         peratom_csp all centro/atom fcc
+# compute         peratom_stress all stress/atom
+
+# Output
+dump 1 all custom 100 dump.voro id type x y z vx vy vz fx fy fz c_peratom_csp
+dump_modify     1 element Al
+
+# Run
+run 20000 
